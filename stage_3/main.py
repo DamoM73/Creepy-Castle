@@ -43,10 +43,7 @@ while running:
     
     if command in ["north", "south", "east", "west"]:
         current_room = current_room.move(command)
-    elif command == "talk"
-        if inhabitant is not None:
-            inhabitant.talk()
-        else:
-            print("There is none here to talk to.")
+    elif command == "talk" and inhabitant is not None:
+        inhabitant.talk()     
     elif command == "quit":
         running = False
