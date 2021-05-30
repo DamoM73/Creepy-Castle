@@ -20,9 +20,12 @@ ballroom.set_linked_rooms(dining_hall,"east")
 # create characters
 dave = Character("Dave", "A smelly zombie")
 dave.set_conversation("Grrr Arrgh!")
+chelsea = Character("Chelsea", "A nervous squirel")
+chelsea.set_conversation("Eeek! Shadows")
 
 # add character to rooms
 dining_hall.set_character(dave)
+ballroom.set_character(chelsea)
 
 
 #describe the rooms
