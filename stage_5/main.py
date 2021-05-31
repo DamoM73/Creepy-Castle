@@ -53,7 +53,6 @@ ballroom.set_item(cheese)
 # intialise the variables
 running = True
 current_room = kitchen
-backpack = []
 
 # ----- MAIN LOOP -----
 while running:
@@ -62,51 +61,26 @@ while running:
         
     command = input("> ").lower()
     
-    # move
     if command in ["north", "south", "east", "west"]:
         current_room = current_room.move(command)
-    # talk
     elif command == "talk":
         if inhabitant is not None:
             inhabitant.talk()
         else:
             print("There is no one here to talk to")
-    # fight
     elif command == "fight":
         if inhabitant is not None:
             weapon = input("What will you fight with? > ").lower()
-            if weapon in backpack:
-                if inhabitant.fight(weapon):
-                    current_room.set_character(None)
-                else:
-                    running = False
+            if inhabitant.fight(weapon):
+                current_room.set_character(None)
             else:
-                print(f"You don't have {weapon}")
-                print(f"{inhabitant.get_name()} strikes you down as you rummage through your backpack")
-                running = False
+                running = False               
         else:
             print("There is no one here to fight")
-    # hug
     elif command == "hug":
         if inhabitant is not None:
             inhabitant.hug()
         else:
             print("There is no one here to hug")
-    # take
-    elif command == "take":
-        if current_room.get_item() != None:
-            backpack.append(current_room.get_item().get_name())
-            print(f"You take {current_room.get_item().get_name()}")
-            current_room.set_item(None)
-        else:
-            print("There is nothing here to take")
-    # backpack
-    elif command == "backpack":
-        if backpack == []:
-            print("You have nothing")
-        else:
-            print("You have:")
-            for item in backpack:
-                print(item.capitalize())
     elif command == "quit":
         running = False
