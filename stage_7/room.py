@@ -33,7 +33,7 @@ class Room():
 
     def describe(self):
         # prints the details of the room to the display
-        print(f"You are in the {self.name}:")
+        print(f"\nYou are in the {self.name}:")
         print(self.description)
         if self.character is not None:
             print(f"{self.character.get_name()} is here. {self.character.get_description()}")

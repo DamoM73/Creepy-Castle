@@ -58,16 +58,13 @@ backpack = []
 # ----- MAIN LOOP -----
 while running:
     inhabitant = current_room.get_character()
-    print("-"*50)
     current_room.describe()
         
-    command = input("\n> ").lower()
-    print("")
+    command = input("> ").lower()
     
     # move
     if command in ["north", "south", "east", "west"]:
         current_room = current_room.move(command)
-        print(f"You travel {command}")
     # talk
     elif command == "talk":
         if inhabitant is not None:
@@ -114,21 +111,5 @@ while running:
             print("You have:")
             for item in backpack:
                 print(item.capitalize())
-    # help
-    elif command == "help":
-        print("Type which direction you wish to move,")
-        print("or use one of these commands:")
-        print("- Talk")
-        print("- Fight")
-        print("- Hug")
-        print("- Take")
-        print("- Backpack")
-    # quit
     elif command == "quit":
         running = False
-    # incorrect command
-    else:
-        print("Enter 'help' for list of commands")
-    input("\nPress <Enter> to continue")
-
-print("Thank you for playing Creepy Castle")
