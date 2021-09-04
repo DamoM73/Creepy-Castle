@@ -113,3 +113,5 @@ while running:
                 print(item.capitalize())
     elif command == "quit":
         running = False
+
+    print(Enemy.get_num_enemy())
